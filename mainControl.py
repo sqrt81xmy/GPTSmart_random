@@ -4,6 +4,7 @@ import os
 import subprocess
 import json5
 import time
+from slither import Slither
 
 from agent.first_agent.deepseek_findblock_reachif import  deal_findBlock, \
     deal_reachStatement_if
@@ -119,7 +120,8 @@ if __name__ == "__main__":
     '''
     # result = generateSequenceFromDeepseek(tmpDir, filename, messages, mainContract)
 
-    solc_path = os.path.join(tmpDir, filename)
+    solc_path = os.path.join(tmpDir, "sol")
+    solc_path = os.path.join(solc_path,filename)
     slither = Slither(solc_path)
     tarContract = None
     for contract in slither.contracts:
